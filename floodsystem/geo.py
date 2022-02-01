@@ -6,16 +6,14 @@ geographical data.
 
 """
 
-from utils import sorted_by_key  # noqa
-
-#testing git
-
+from .utils import sorted_by_key
 from haversine import haversine, Unit
 
 def stations_by_distance(stations, p):
     StationsDistance = [""]*len(stations)
     i = 0
     for station in stations:
-        StationsDistance[i] = (station.name, station.town , haversine(station.coord, p))
+        StationsDistance[i] = (station.name, haversine(station.coord, p))
         i += 1
+    sorted_by_key(StationsDistance, 1, reverse=False)
     return StationsDistance
