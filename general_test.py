@@ -8,8 +8,9 @@ AllStations = build_station_list()
 Rivers = set()
 for station in AllStations:
     Rivers.add(station.river)
-
-print(len(Rivers))
+Rivers_list = list(Rivers)
+Rivers_list.sort()
+print(Rivers_list)
 
 a = [1, 2, 3, 4, 3, 2]
 my_set = {x for x in a}

@@ -35,4 +35,11 @@ def rivers_with_station(stations):
     Rivers = set()
     for station in stations:
         Rivers.add(station.river)
-    return Rivers
+    # converting set into a list to allow for ordering and slicing/indexing
+    Rivers_list = list(Rivers)
+    Rivers_list.sort()
+    return Rivers_list
+
+def stations_by_river(stations):
+    
+    return 9
