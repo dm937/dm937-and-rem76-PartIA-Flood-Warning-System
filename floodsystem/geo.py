@@ -31,5 +31,7 @@ def stations_within_radius(stations, centre, r):
 def rivers_with_station(stations):
     # use of a set as the container will ensure that no duplicate rivers can be added to the container
     # length of this container will be number of rivers with a monitoring station
-    
-    return set(stations.river)
+    Rivers = set()
+    for station in stations:
+        Rivers.add(station.river)
+    return Rivers
