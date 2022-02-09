@@ -29,15 +29,20 @@ def stations_within_radius(stations, centre, r):
 def rivers_by_station_number(stations, N):
     #returns the N rivers with the greatest number of stataions with the number of stations on each river
     rivers = [i.river for i in stations]
-    rivers_count = []
+    rivers_count = [(None,None)]*N
+    max = 0
+    #Producing a count of the occurences of a river
     for i in rivers:
         n=0
         for j in rivers:
             if i == j:
                 n+=1
-        if not((i,n) in rivers_count):
+        # Deciding whether or not to add a river to the list with the most
+        if not((i,n) in rivers_count) and n >= rivers[N]:
+            if n > max:
+                max = n
+            
             rivers_count.append((i,n))
-    print(rivers_count)
     return rivers_count
 
 
