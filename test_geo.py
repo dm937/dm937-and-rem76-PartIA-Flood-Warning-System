@@ -12,3 +12,8 @@ def test_correct_lengths_stations_by_distance():
      assert len(build_station_list()) == len(floodsystem.geo.stations_by_distance(build_station_list(), (-90, 90)))
      assert len(build_station_list()) == len(floodsystem.geo.stations_by_distance(build_station_list(), (90, -90)))
 
+def test_stations_within_radius():
+    stations = build_station_list()
+    assert floodsystem.geo.stations_within_radius(stations, (52.2053, 0.1218), 10000) == len(stations)
+    assert floodsystem.geo.stations_within_radius(stations, (52.2053, 0.1218), 1) > 0
+    assert floodsystem.geo.stations_within_radius(stations, (52.2053, 0.1218), 1) < floodsystem.geo.stations_within_radius(stations, (52.2053, 0.1218), 10)
