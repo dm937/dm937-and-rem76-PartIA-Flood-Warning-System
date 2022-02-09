@@ -35,11 +35,16 @@ def rivers_with_station(stations):
     Rivers = set()
     for station in stations:
         Rivers.add(station.river)
-    # converting set into a list to allow for ordering and slicing/indexing
-    Rivers_list = list(Rivers)
-    Rivers_list.sort()
-    return Rivers_list
+    # sorted command then changes the set into an ascending ordered list - usefull for indexing/slicing
+    return sorted(Rivers)
 
 def stations_by_river(stations):
-    
-    return 9
+    station_river_dict = {}
+    Rivers = rivers_with_station(stations)
+    for river in Rivers:
+        Connections = []
+        for station in stations:
+            if station.river == river:
+                Connections.append(station)
+        station_river_dict[river] = Connections
+    return station_river_dict
