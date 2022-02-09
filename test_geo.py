@@ -12,3 +12,9 @@ def test_correct_lengths_stations_by_distance():
      assert len(build_station_list()) == len(floodsystem.geo.stations_by_distance(build_station_list(), (-90, 90)))
      assert len(build_station_list()) == len(floodsystem.geo.stations_by_distance(build_station_list(), (90, -90)))
 
+def test_rivers_with_station():
+    assert 9 ==9
+
+def test_stations_with_river():
+    assert 9 ==9
+    
