@@ -39,12 +39,18 @@ def rivers_with_station(stations):
     return sorted(Rivers)
 
 def stations_by_river(stations):
+    # creates empty dictionary 
     station_river_dict = {}
     Rivers = rivers_with_station(stations)
+    # looping through all rivers the user want to create keys for
     for river in Rivers:
+        # creates empty list for stations with that river to be stored in
         Connections = []
         for station in stations:
+            # adds all stations with that river to a list
             if station.river == river:
                 Connections.append(station)
+        # the river then becomes the key for this list of stations
         station_river_dict[river] = Connections
     return station_river_dict
+

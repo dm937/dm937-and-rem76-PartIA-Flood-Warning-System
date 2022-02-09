@@ -17,8 +17,8 @@ def run():
     # Display data from 3 stations:
     for station in stations:
         if station.name in [
-                'Cambridge', 'Surfleet Sluice', 'Gaw Bridge'
-        ]:
+                'Sandwich Quay', 'Sindlesham Mill', 'Stone Creek'
+                        ]:
             print(station)
 
 
