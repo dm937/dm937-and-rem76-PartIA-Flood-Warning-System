@@ -24,8 +24,8 @@ def stations_by_distance(stations, p):
 def stations_within_radius(stations, centre, r):
     # Task 1 C, returns a list of stations within a radius
     print("Test")
-  
     return [i for i in stations if(haversine(i.coord,centre)<r)]
+ 
     
 
 
