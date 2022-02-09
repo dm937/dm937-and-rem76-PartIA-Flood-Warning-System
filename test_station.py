@@ -3,7 +3,6 @@
 # SPDX-License-Identifier: MIT
 """Unit test for the station module"""
 
-from types import NoneType
 from floodsystem.station import MonitoringStation
 from floodsystem.station import inconsistent_typical_range_stations
 # below are bad stations 
@@ -13,7 +12,7 @@ Inconsistent_Station_1 = MonitoringStation(
     measure_id=10,
     label='Inconsistent_Station_1',
     coord=(float(3.0), float(3.0)),
-    typical_range= NoneType,
+    typical_range= None,
     river='lazy',
     town='nowhereland'
 )
