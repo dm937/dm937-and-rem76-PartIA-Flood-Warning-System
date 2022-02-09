@@ -13,8 +13,7 @@ def stations_by_distance(stations, p):
     StationsDistance = [""]*len(stations)
     i = 0
     for station in stations:
-        StationsDistance[i] = (station, int(haversine(station.coord, p)))
+        StationsDistance[i] = (station.name, station.town) + (int(haversine(station.coord, p)),)
         i += 1
-    StationsDistance = sorted_by_key(StationsDistance, 1)
-    return StationsDistance
+    return sorted_by_key(StationsDistance, 2)
     
