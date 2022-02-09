@@ -11,11 +11,13 @@ from haversine import haversine
 
 
 def stations_by_distance(stations, p):
-    StationsDistance = [""]*len(stations)
-    i = 0
+    #creates empty list 
+    StationsDistance = []
+    # appends (name, town, distance) tuple for every station in stations
     for station in stations:
-        StationsDistance[i] = (station.name, station.town) + (haversine(station.coord, p),)
-        i += 1
+        Current_tuple = (station.name, station.town) + (haversine(station.coord, p),)
+        StationsDistance.append(Current_tuple)
+    # final line sorts the list by distance (distance is the 2nd index in each tuple)
     return sorted_by_key(StationsDistance, 2)
 
 
@@ -26,3 +28,8 @@ def stations_within_radius(stations, centre, r):
     """[i if (haversine(i, centre) > r) for i in stations]"""
 
 
+def rivers_with_station(stations):
+    # use of a set as the container will ensure that no duplicate rivers can be added to the container
+    # length of this container will be number of rivers with a monitoring station
+     
+    return 9
