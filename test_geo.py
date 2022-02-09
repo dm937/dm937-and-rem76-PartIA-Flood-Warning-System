@@ -17,3 +17,9 @@ def test_stations_within_radius():
     assert floodsystem.geo.stations_within_radius(stations, (52.2053, 0.1218), 10000) == len(stations)
     assert floodsystem.geo.stations_within_radius(stations, (52.2053, 0.1218), 1) > 0
     assert floodsystem.geo.stations_within_radius(stations, (52.2053, 0.1218), 1) < floodsystem.geo.stations_within_radius(stations, (52.2053, 0.1218), 10)
+def test_rivers_with_station():
+    assert 9 ==9
+
+def test_stations_with_river():
+    assert 9 ==9
+    
