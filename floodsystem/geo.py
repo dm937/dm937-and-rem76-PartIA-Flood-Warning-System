@@ -6,7 +6,7 @@ geographical data.
 
 """
 
-from .utils import sorted_by_key
+"""from .utils import sorted_by_key"""
 from haversine import haversine
 
 
@@ -23,7 +23,8 @@ def stations_by_distance(stations, p):
 def stations_within_radius(stations, centre, r):
     # Task 1 C, returns a list of stations within a radius
     print("Test")
-    print(haversine(stations[1],centre))
-    """[i if (haversine(i, centre) > r) for i in stations]"""
+  
+    return [i for i in stations if(haversine(i.coord,r)<r)]
+    
 
 
