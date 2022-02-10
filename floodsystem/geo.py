@@ -38,7 +38,7 @@ def rivers_by_station_number(stations, N):
     #sorts the list in decending order of station number
     rivers_ordered = sorted(rivers_count, key = lambda i: i[1], reverse= True)
     #Takes the N with the largest number of stations, allowing additional repeats of the final value
-    top_N = rivers_ordered[:N-1] + [i for i in rivers_ordered if i[1] == rivers_ordered[N][1]] #TODO don't go through the whole list to look for repeats of Nth values
+    top_N = rivers_ordered[:N-1] + [i for i in rivers_ordered if i[1] == rivers_ordered[N][1]]
     return top_N
 
 
