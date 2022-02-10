@@ -18,6 +18,13 @@ def test_stations_within_radius():
     assert len(floodsystem.geo.stations_within_radius(AllStations, (52.2053, 0.1218), 10)) > 0
     assert len(floodsystem.geo.stations_within_radius(AllStations, (52.2053, 0.1218), 1)) < len(floodsystem.geo.stations_within_radius(AllStations, (52.2053, 0.1218), 10))
 
+def rivers_by_station_number(stations, N):
+    river_test = floodsystem.geo.rivers_by_station_number(AllStations, 10)
+    assert len(river_test) >= 1
+    assert river_test[1][1] >= river_test[1][4]
+    assert type(river_test) == list
+    assert type(river_test[2]) == tuple
+
 def test_rivers_with_station():
     assert len(floodsystem.geo.rivers_with_station(AllStations)) > 0
     assert len(floodsystem.geo.rivers_with_station([])) == 0
