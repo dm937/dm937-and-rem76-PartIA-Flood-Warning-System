@@ -30,14 +30,15 @@ def rivers_by_station_number(stations, N):
     #returns the N rivers with the greatest number of stataions with the number of stations on each river
     rivers = [i.river for i in stations]
     rivers_count = []
-    #Producing a count of the occurences of a river
+    #produces a list of tuples of rivers and their number of stations
     for i in rivers:
         n= rivers.count(i)
         rivers_count.append((i,n))
         rivers = [x for x in rivers if x != i]
+    #sorts the list in decending order of station number
     rivers_ordered = sorted(rivers_count, key = lambda i: i[1], reverse= True)
-    min = rivers_ordered[N][1]
-    top_N = [i for i in rivers_ordered if i[1] >= min]
+    #Takes the N with the largest number of stations, allowing additional repeats of the final value
+    top_N = rivers_ordered[:N] + [i for i in rivers_ordered if i[1] == rivers_ordered[N][1]]
     return top_N
 
 
