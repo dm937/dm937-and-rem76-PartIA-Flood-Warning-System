@@ -9,7 +9,6 @@ geographical data.
 from sqlalchemy import true
 from .utils import sorted_by_key
 from haversine import haversine
-import numpy as np
 
 def stations_by_distance(stations, p):
     #creates empty list 
@@ -31,12 +30,11 @@ def rivers_by_station_number(stations, N):
     #returns the N rivers with the greatest number of stataions with the number of stations on each river
     rivers = [i.river for i in stations]
     rivers_count = []
-    rivers_ordered = np.array()
     #Producing a count of the occurences of a river
     for i in rivers:
         n= rivers.count(i)
         rivers_count.append((i,n))
-        rivers.remove(i)
+        rivers = [x for x in rivers if x != i]
     rivers_ordered = sorted(rivers_count, key = lambda i: i[1], reverse= True)
     min = rivers_ordered[N][1]
     top_N = [i for i in rivers_ordered if i[1] >= min]
