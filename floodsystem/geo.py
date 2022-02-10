@@ -6,11 +6,11 @@ geographical data.
 
 """
 
-from sqlalchemy import true
 from .utils import sorted_by_key
 from haversine import haversine
 
 def stations_by_distance(stations, p):
+    # this program returns a list
     #creates empty list 
     StationsDistance = []
     # appends (name, town, distance) tuple for every station in stations
@@ -22,7 +22,7 @@ def stations_by_distance(stations, p):
 
 
 def stations_within_radius(stations, centre, r):
-    # Task 1 C, returns a list of stations within a radius
+    # Task 1 C, returns a list of stations from the inputted list "stations" within a radius "r" of a coordinate tuple "centre"
     return [i for i in stations if(haversine(i.coord,centre)<r)]
  
     
@@ -43,10 +43,12 @@ def rivers_by_station_number(stations, N):
 
 
 def rivers_with_station(stations):
+    # This functions creates a container with the rivers monitoring a list of stations - the rivers in this list are all unique 
     # use of a set as the container will ensure that no duplicate rivers can be added to the container
     # length of this container will be number of rivers with a monitoring station
     Rivers = set()
     for station in stations:
+        # as Rivers is a set it will only add non dupliccate entries 
         Rivers.add(station.river)
     # sorted command then changes the set into an ascending ordered list - usefull for indexing/slicing
     return sorted(Rivers)
@@ -54,6 +56,7 @@ def rivers_with_station(stations):
 def stations_by_river(stations):
     # creates empty dictionary 
     station_river_dict = {}
+    #uses previous function to get list of rivers monitoring the inputed list of stations
     Rivers = rivers_with_station(stations)
     # looping through all rivers the user want to create keys for
     for river in Rivers:
