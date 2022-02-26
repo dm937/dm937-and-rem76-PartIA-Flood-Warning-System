@@ -57,6 +57,18 @@ class MonitoringStation:
             # typical range has passed tests and so is returned as consistent
             return True
 
+    def relative_water_level(self):
+        '''
+        returns the current water level as a fraction of its average
+        '''
+        # makes sure the range is consistent 
+        if MonitoringStation.typical_range_consistent(self) == False or self.latest_level == None:
+            return None
+        elif self.latest_level < self.typical_range[0]:
+            return 0
+        # if range is consistent and a latest level exists it will give the current range as a fraction of the typical range 
+        return  ((self.latest_level - self.typical_range[0])/(self.typical_range[1] - self.typical_range[0]))
+
 
 def inconsistent_typical_range_stations(stations):
     #given a list of MonitoringStation objects it will return a list of which of these stations has inconsistent data 
