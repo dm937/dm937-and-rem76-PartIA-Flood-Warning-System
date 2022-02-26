@@ -69,4 +69,3 @@ def stations_by_river(stations):
         # the river then becomes the key for this list of stations
         station_river_dict[river] = Connections
     return station_river_dict
-

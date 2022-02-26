@@ -57,6 +57,12 @@ class MonitoringStation:
             # typical range has passed tests and so is returned as consistent
             return True
 
+    def relative_water_level(self):
+        '''
+        returns the current water level as a fraction of its average
+        '''
+        
+
 
 def inconsistent_typical_range_stations(stations):
     #given a list of MonitoringStation objects it will return a list of which of these stations has inconsistent data 
