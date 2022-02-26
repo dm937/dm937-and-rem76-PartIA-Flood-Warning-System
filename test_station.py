@@ -27,6 +27,28 @@ Inconsistent_Station_2 = MonitoringStation(
     town='nowhereland'
 )
 
+
+consistent_Station_2 = MonitoringStation(
+    station_id=2,
+    measure_id=10,
+    label='Inconsistent_Station_1',
+    coord=(float(3.1), float(3.0)),
+    typical_range= (0.50, 1.50),
+    river='lazy',
+    town='nowhereland'
+)
+
+consistent_Station_1 = MonitoringStation(
+    station_id=1,
+    measure_id=10,
+    label='Inconsistent_Station_1',
+    coord=(float(3.0), float(3.0)),
+    typical_range= (0.20, 1.20),
+    river='lazy',
+    town='nowhereland'
+)
+
+
 def test_create_monitoring_station():
 
     # Create a station
@@ -54,3 +76,11 @@ def test_typical_range_consistent():
 def test_inconsistent_typical_range_stations():
     BadStations = [Inconsistent_Station_1, Inconsistent_Station_2]
     assert len(inconsistent_typical_range_stations(BadStations)) == 2
+
+def test_relative_water_level():
+    consistent_Station_1.latest_level = 1.20
+    assert MonitoringStation.relative_water_level(consistent_Station_1) == 1
+    consistent_Station_1.latest_level = 0.20
+    assert MonitoringStation.relative_water_level(consistent_Station_1) == 0
+    consistent_Station_1.latest_level = 0.70
+    assert MonitoringStation.relative_water_level(consistent_Station_1) == 0.5
