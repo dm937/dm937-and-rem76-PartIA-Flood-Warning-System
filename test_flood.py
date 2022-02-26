@@ -1,10 +1,21 @@
 from floodsystem.station import MonitoringStation
 from floodsystem.flood import stations_level_over_threshold
 
+consistent_Station_3 = MonitoringStation(
+    station_id=3,
+    measure_id=10,
+    label='consistent_Station_3',
+    coord=(float(3.1), float(3.0)),
+    typical_range= (0.30, 1.30),
+    river='lazy',
+    town='nowhereland'
+)
+
+
 consistent_Station_2 = MonitoringStation(
     station_id=2,
     measure_id=10,
-    label='Inconsistent_Station_1',
+    label='consistent_Station_2',
     coord=(float(3.1), float(3.0)),
     typical_range= (0.50, 1.50),
     river='lazy',
@@ -14,7 +25,7 @@ consistent_Station_2 = MonitoringStation(
 consistent_Station_1 = MonitoringStation(
     station_id=1,
     measure_id=10,
-    label='Inconsistent_Station_1',
+    label='consistent_Station_1',
     coord=(float(3.0), float(3.0)),
     typical_range= (0.20, 1.20),
     river='lazy',
@@ -22,14 +33,19 @@ consistent_Station_1 = MonitoringStation(
 )
 
 def test_stations_level_over_threshold():
-    stations = [consistent_Station_1, consistent_Station_2]
+    stations = [consistent_Station_1, consistent_Station_2, consistent_Station_3]
     consistent_Station_1.latest_level = 1.20
     consistent_Station_2.latest_level = 0.50
-    # testing that both stations are returned when a negative tolerance is given
-    assert len(stations_level_over_threshold(stations, -1)) == 2
-    # testing that only 1 is returned when 0 is the tolerance
-    assert len(stations_level_over_threshold(stations, 0)) == 1
-    # testing that none are given when 0 is the tolerance (as 1 is not greater than 1)
-    assert len(stations_level_over_threshold(stations, 1)) == 0
+    consistent_Station_3.latest_level = 1.33
+    # testing that all stations are returned when a negative tolerance is given
+    assert len(stations_level_over_threshold(stations, -1)) == 3
+    # testing descending order
+    assert stations_level_over_threshold(stations, -1)[0][1] > stations_level_over_threshold(stations, -1)[1][1] > stations_level_over_threshold(stations, -1)[2][1]
+    # testing that 2 are returned when 0 is the tolerance
+    assert len(stations_level_over_threshold(stations, 0)) == 2
+    # testing that only 1 is given when 1 is the tolerance
+    assert len(stations_level_over_threshold(stations, 1)) == 1
+    # testing that the name of the station given is consistent station 3
+    assert stations_level_over_threshold(stations, 1)[0][0].name == 'consistent_Station_3'
     
 

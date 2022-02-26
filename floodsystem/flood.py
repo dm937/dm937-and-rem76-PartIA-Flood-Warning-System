@@ -26,5 +26,5 @@ def stations_level_over_threshold(stations, tol):
             # adds the staion and relative water level tuple to the list
             Stations_over_tol.append((station, MonitoringStation.relative_water_level(station)))
     # sorts the list in descending order by the relative water level
-    sorted(Stations_over_tol, key=lambda tup: tup[1], reverse=True)
+    Stations_over_tol = sorted(Stations_over_tol, key=lambda tup: tup[1], reverse=True)
     return Stations_over_tol
