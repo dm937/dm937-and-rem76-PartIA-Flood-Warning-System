@@ -83,4 +83,10 @@ def test_relative_water_level():
     consistent_Station_1.latest_level = 0.20
     assert MonitoringStation.relative_water_level(consistent_Station_1) == 0
     consistent_Station_1.latest_level = 0.70
-    assert MonitoringStation.relative_water_level(consistent_Station_1) == 0.5
+    assert round(MonitoringStation.relative_water_level(consistent_Station_1), 3) == 0.50
+    # checking below the minimum gives 0
+    consistent_Station_1.latest_level = 0.15
+    assert round(MonitoringStation.relative_water_level(consistent_Station_1), 3) == 0.00
+    # checking above the maximum will give an appropriate fraction
+    consistent_Station_1.latest_level = 2.20
+    assert round(MonitoringStation.relative_water_level(consistent_Station_1), 3) == 2.00
