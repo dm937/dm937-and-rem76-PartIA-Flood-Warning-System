@@ -33,7 +33,7 @@ def stations_highest_rel_level(stations, N):
     station = stations[1]
     print(station.relative_water_level())
     # returns station objects with the highest water level relative to typical
-    valid_stations = [i for i in stations if i.relative_water_level() != None]
+    valid_stations = [i for i in stations if i.relative_water_level() != None and i.typical_range_consistent() == True]
     station_levels = [(i, i.relative_water_level()) for i in valid_stations]
     sorted_station_levels = sorted(station_levels, key = lambda tup:tup[1], reverse=True)
     sorted_stations = [i[0] for i in sorted_station_levels]
