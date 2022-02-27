@@ -5,9 +5,10 @@
 geographical data.
 
 """
-
+from math import cos, asin, sqrt
+from cmath import pi
 from .utils import sorted_by_key
-import haversine
+
 
 def stations_by_distance(stations, p):
     # this program returns a list
@@ -15,15 +16,23 @@ def stations_by_distance(stations, p):
     StationsDistance = []
     # appends (name, town, distance) tuple for every station in stations
     for station in stations:
-        Current_tuple = (station.name, station.town) + (haversine.haversine(station.coord, p),)
+        Current_tuple = (station.name, station.town) + (distance_between_points(station.coord, p),)
         StationsDistance.append(Current_tuple)
     # final line sorts the list by distance (distance is the 2nd index in each tuple)
     return sorted_by_key(StationsDistance, 2)
 
+def distance_between_points(coord1, coord2):
+    '''
+    gives the distance between 2 coordinates (coords in longtitude and latitude)
+    '''
+    lat1, lon1, lat2, lon2 = coord1[0], coord1[1], coord2[0], coord2[1]
+    p = pi/180
+    a = 0.5 - cos((lat2-lat1)*p)/2 + cos(lat1*p) * cos(lat2*p) * (1-cos((lon2-lon1)*p))/2
+    return 12742 * asin(sqrt(a))
 
 def stations_within_radius(stations, centre, r):
     # Task 1 C, returns a list of stations from the inputted list "stations" within a radius "r" of a coordinate tuple "centre"
-    return [i for i in stations if(haversine(i.coord,centre)<r)]
+    return [i for i in stations if(distance_between_points(i.coord,centre)<r)]
  
     
 def rivers_by_station_number(stations, N):
