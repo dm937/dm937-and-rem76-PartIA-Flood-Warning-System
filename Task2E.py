@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
 
@@ -27,16 +26,3 @@ def run():
 if __name__ == "__main__":
     print("*** Task 2D: CUED Part IA Flood Warning System ***")
     run()
-=======
-from floodsystem.station import MonitoringStation
-from floodsystem.stationdata import build_station_list, update_water_levels
-from floodsystem.plot import plot_water_levels
-def run():
-    plot_water_levels()
-
-
-
-if __name__ == "__main__":
-    print("*** Task 2C: CUED Part IA Flood Warning System ***")
-    run()
->>>>>>> 4510fe8c2aaf5f45b9c9a76127bab544da0d4bb5
