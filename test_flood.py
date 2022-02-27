@@ -38,7 +38,7 @@ consistent_Station_1.latest_level = 1.20
 consistent_Station_2.latest_level = 0.50
 consistent_Station_3.latest_level = 1.33
 
-station_dict = {i.name : i for i in stations}
+station_dict = {i.name : i for i in stations} #delete
 
 
 def test_stations_level_over_threshold():
@@ -57,7 +57,4 @@ def test_stations_level_over_threshold():
 def test_stations_highest_rel_level():
     high_rev_level = stations_highest_rel_level(stations, 3)
     assert len(high_rev_level) == 3 #testing that correct number of stations are returned
-    assert high_rev_level[1][1] >= high_rev_level[2][1] #checking that sort is correct
-    high_rev_level[0][0]
-    "assert high_rev_level[0][1] == station_dict[high_rev_level[0][0]].relative_water_level()" #Checking the relative water level value
-    assert high_rev_level[0][1] == station_dict[consistent_Station_1].relative_water_level()
+    assert high_rev_level[1].relative_water_level() >= high_rev_level[2].relative_water_level() #checking that sort is correct
