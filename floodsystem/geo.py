@@ -7,7 +7,7 @@ geographical data.
 """
 
 from .utils import sorted_by_key
-from haversine import haversine
+import haversine
 
 def stations_by_distance(stations, p):
     # this program returns a list
@@ -15,7 +15,7 @@ def stations_by_distance(stations, p):
     StationsDistance = []
     # appends (name, town, distance) tuple for every station in stations
     for station in stations:
-        Current_tuple = (station.name, station.town) + (haversine(station.coord, p),)
+        Current_tuple = (station.name, station.town) + (haversine.haversine(station.coord, p),)
         StationsDistance.append(Current_tuple)
     # final line sorts the list by distance (distance is the 2nd index in each tuple)
     return sorted_by_key(StationsDistance, 2)
