@@ -2,6 +2,8 @@ from floodsystem.analysis import flood_risk_assessment
 from floodsystem.station import MonitoringStation
 from floodsystem.stationdata import build_station_list, update_water_levels
 from floodsystem.flood import stations_highest_rel_level
+from floodsystem.datafetcher import fetch_measure_levels
+from datetime import timedelta
 
 
 def run():
@@ -10,7 +12,8 @@ def run():
     update_water_levels(stations)
     Nsevere, Nhigh, Nmoderate, Nlow, Nincompatible = 0,0,0,0, 0
     for station in stations[-21:-1]:
-        assessment = flood_risk_assessment(station)
+        dates, levels = fetch_measure_levels(station.measure_id, dt=timedelta(days=2))
+        assessment = flood_risk_assessment(station, dates, levels)
         if  assessment =='severe':
             Nsevere +=1
         elif  assessment =='high':
