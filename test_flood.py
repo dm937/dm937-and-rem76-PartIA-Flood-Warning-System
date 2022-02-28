@@ -52,8 +52,7 @@ def test_stations_level_over_threshold():
     assert len(stations_level_over_threshold(stations, 1)) == 1
     # testing that the name of the station given is consistent station 3
     assert stations_level_over_threshold(stations, 1)[0][0].name == 'consistent_Station_3'
-    
-    
+
 def test_stations_highest_rel_level():
     high_rev_level = stations_highest_rel_level(stations, 3)
     assert len(high_rev_level) == 3 #testing that correct number of stations are returned
