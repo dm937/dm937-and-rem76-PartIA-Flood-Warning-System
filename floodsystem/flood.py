@@ -1,5 +1,5 @@
 
-import numpy as py
+import numpy as np
 
 from floodsystem.station import MonitoringStation
 
