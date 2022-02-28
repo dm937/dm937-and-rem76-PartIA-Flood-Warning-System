@@ -10,12 +10,13 @@ def plot_water_levels(station, dates, levels):
     And includes plot lines for the typical low and high levels.
     '''
     if levels == [] or dates ==[]:
-        pass
+        return 'no current levels could be found'
     else:
+        # converts dates to more useable format
         dates = matplotlib.dates.date2num(dates)
-        #print(dates)
+        # subtacts the first (and largest) date from all previous dates, giving an array ranging from 0 to -x where x is the number of days previously specified
         dates = dates - dates[0]
-        num = 25
+        num = 40
         dates_plotted_against = linspace(dates[0], dates[-1], num) 
         plt.plot(dates_plotted_against, linspace(station.typical_range[0], station.typical_range[0], num), '-g', label = 'typical low')
         plt.plot(dates_plotted_against, linspace(station.typical_range[1], station.typical_range[1], num), '-r', label = 'typical high')

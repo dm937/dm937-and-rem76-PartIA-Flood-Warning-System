@@ -36,7 +36,6 @@ def stations_level_over_threshold(stations, tol):
 
 def stations_highest_rel_level(stations, N):
     station = stations[1]
-    print(station.relative_water_level())
     # returns station objects with the highest water level relative to typical
     valid_stations = [i for i in stations if i.relative_water_level() != None and i.typical_range_consistent() == True]
     station_levels = [(i, i.relative_water_level()) for i in valid_stations]
