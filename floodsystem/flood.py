@@ -3,18 +3,6 @@ import numpy as py
 
 from floodsystem.station import MonitoringStation
 
-
-
-def stations_highest_rel_level(stations, N):
-    range_ratios = []
-    for station in stations:
-        appending = [station, station.typical_range]
-        range_ratios.append(appending)
- #   range_ratios = [i, i.typical_range for i in stations]
-    sorted_range_ratios = range_ratios.sorted()
-    return sorted_range_ratios
-
-
 def stations_level_over_threshold(stations, tol):
     '''
     returns a list of tuples, where each tuple holds (i) a station (object) 
