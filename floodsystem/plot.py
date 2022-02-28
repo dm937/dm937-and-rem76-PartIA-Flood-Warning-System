@@ -48,7 +48,6 @@ def plot_water_level_with_fit(station, dates, levels, p):
         dates = dates - dates[0]
         num = 40
         dates_plotted_against = linspace(dates[0], dates[-1], num)
-        print(poly(dates))
         plt.plot(dates, poly(dates), 'lightskyblue')
         plt.plot(dates, levels, 'b')
         plt.plot(dates_plotted_against, linspace(station.typical_range[0], station.typical_range[0], num), '-g', label = 'typical low')
