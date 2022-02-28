@@ -5,11 +5,9 @@ from floodsystem.flood import stations_highest_rel_level
 
 
 def run():
-    # aiming to return the number of stations that are at severe, high, moderate and low risk out of the top 4 highest relative current stations
+    # gives the number of stations for each type of threat level in a smaller sample of all stations so as to reduce computation time
     stations = build_station_list()
     update_water_levels(stations)
-    #NumStations = 100
-    #stations = stations_highest_rel_level(stations, NumStations)[-6:-1]
     Nsevere, Nhigh, Nmoderate, Nlow, Nincompatible = 0,0,0,0, 0
     for station in stations[-21:-1]:
         assessment = flood_risk_assessment(station)
