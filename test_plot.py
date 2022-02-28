@@ -19,3 +19,10 @@ def test_plot_water_levels():
     dates, levels = [], []
     # testing that when an empty dates or levels list is inputted then no graph is plotted
     assert plot_water_levels(Test_station, dates, levels) == 'Test Station station has empty levels or dates list'
+
+
+
+def test_plot_water_level_with_fit():
+    dates, levels = [], []
+    # testing that when an empty dates or levels list is inputted then no graph is plotted
+    assert plot_water_levels(Test_station, dates, levels) == 'Test Station station has empty levels or dates list'
