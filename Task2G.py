@@ -8,7 +8,7 @@ def run():
     # aiming to return the number of stations that are at severe, high, moderate and low risk 
     stations = build_station_list()
     update_water_levels(stations)
-    NumStations = 20
+    NumStations = 6
     stations = stations_highest_rel_level(stations, NumStations)
     Nsevere, Nhigh, Nmoderate, Nlow = 0,0,0,0
     for station in stations:
@@ -20,7 +20,7 @@ def run():
             Nmoderate += 1
         elif flood_risk_assessment(station) =='low':
             Nlow +=1
-    return '{} stations are at severe risk of flooding, {} stations are at high risk of flooding, {} stations are at moderate risk of flooding and {} stations are at low risk of flooding'.format(Nsevere, Nhigh, Nmoderate, Nlow)
+    print('{} stations are at severe risk of flooding, {} stations are at high risk of flooding, {} stations are at moderate risk of flooding and {} stations are at low risk of flooding'.format(Nsevere, Nhigh, Nmoderate, Nlow))
 
 
 if __name__ == "__main__":

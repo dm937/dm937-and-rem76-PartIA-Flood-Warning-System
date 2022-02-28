@@ -18,14 +18,14 @@ def polyfit(dates, levels, p):
 def flood_risk_assessment(station):
     '''
     used to assess the risk of flooding and returns one of 4 strings
-    severe - average level over the past 3 days is at a relative level of >3
-    high - average level over the past 3 days is at a relative level of 3> relative level>1
-    moderate - average level over the past 3 days is at a relative level of 1>relative level>0.8
-    low - average level over the past 3 days is at a relative level of <0.8
+    severe - average level over the past days_back is at a relative level of >3
+    high - average level over the past days_back is at a relative level of 3> relative level>1
+    moderate - average level over the past days_back is at a relative level of 1>relative level>0.8
+    low - average level over the past days_back is at a relative level of <0.8
     '''
     if not station.typical_range_consistent:
         return None
-    days_back = 3
+    days_back = 2
     dates, levels = fetch_measure_levels(station.measure_id, dt=timedelta(days=days_back))
     if dates == [] or levels ==[]:
         return '{} station has empty levels or dates list'.format(station.name)
