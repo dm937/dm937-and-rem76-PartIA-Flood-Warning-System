@@ -11,7 +11,8 @@ def plot_water_levels(station, dates, levels):
     '''
     # checks that 
     if levels == [] or dates ==[]:
-        return 'no current levels could be found'
+        print(station.name, ' has an empty levels or dates list')
+        return '{} station has empty levels or dates list'.format(station.name)
     else:
         # converts dates to more useable format
         dates = matplotlib.dates.date2num(dates)
