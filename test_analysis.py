@@ -30,3 +30,6 @@ def test_flood_risk_assessment():
     levels, dates = [], [datetime.datetime.utcnow()]
     # checking inconsistent results produce no response
     assert flood_risk_assessment(Test_station, dates, levels) == None
+def polyfit():
+    order, dates, levels = 4, 
+    # test: wacky dates, warning for high order, warning for empty
