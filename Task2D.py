@@ -13,7 +13,7 @@ def run():
     stations = build_station_list()
 
     # Station name to find
-    station_name = "Gaynes Park"
+    station_name = "Cam"
 
     # Find station
     station_cam = None

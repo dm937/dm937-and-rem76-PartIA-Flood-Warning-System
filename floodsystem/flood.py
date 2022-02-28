@@ -8,7 +8,8 @@ from floodsystem.station import MonitoringStation
 def stations_highest_rel_level(stations, N):
     range_ratios = []
     for station in stations:
-        range_ratios.append([station, station.typical_range])
+        appending = [station, station.typical_range]
+        range_ratios.append(appending)
  #   range_ratios = [i, i.typical_range for i in stations]
     sorted_range_ratios = range_ratios.sorted()
     return sorted_range_ratios
