@@ -9,6 +9,7 @@ def plot_water_levels(station, dates, levels):
     displays a plot of the water level data against time for a station.
     And includes plot lines for the typical low and high levels.
     '''
+    # checks that 
     if levels == [] or dates ==[]:
         return 'no current levels could be found'
     else:
@@ -21,7 +22,7 @@ def plot_water_levels(station, dates, levels):
         plt.plot(dates_plotted_against, linspace(station.typical_range[0], station.typical_range[0], num), '-g', label = 'typical low')
         plt.plot(dates_plotted_against, linspace(station.typical_range[1], station.typical_range[1], num), '-r', label = 'typical high')
         plt.plot(dates, levels, 'b')
-        plt.xlabel('days before')
+        plt.xlabel('days before current date')
         plt.ylabel('water level (m)')
         plt.xticks(rotation=45);
         plt.title(station.name)
