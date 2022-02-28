@@ -27,8 +27,9 @@ def flood_risk_assessment(station):
         return None
     days_back = 2
     dates, levels = fetch_measure_levels(station.measure_id, dt=timedelta(days=days_back))
-    if dates == [] or levels ==[]:
-        return '{} station has empty levels or dates list'.format(station.name)
+    if dates == [] or levels ==[] or type(dates) == None or type(levels) == None:
+        return None
+    #    return '{} station has empty levels or dates list'.format(station.name)
     level_array = np.array(levels)
     average_level = np.dot(level_array, np.ones(len(level_array)))
     relative_level_ot = average_level/station.typical_range[1]

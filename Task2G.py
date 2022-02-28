@@ -5,22 +5,25 @@ from floodsystem.flood import stations_highest_rel_level
 
 
 def run():
-    # aiming to return the number of stations that are at severe, high, moderate and low risk 
+    # aiming to return the number of stations that are at severe, high, moderate and low risk out of the top 4 highest relative current stations
     stations = build_station_list()
     update_water_levels(stations)
-    NumStations = 6
-    stations = stations_highest_rel_level(stations, NumStations)
-    Nsevere, Nhigh, Nmoderate, Nlow = 0,0,0,0
-    for station in stations:
-        if flood_risk_assessment(station) =='severe':
+    #NumStations = 100
+    #stations = stations_highest_rel_level(stations, NumStations)[-6:-1]
+    Nsevere, Nhigh, Nmoderate, Nlow, Nincompatible = 0,0,0,0, 0
+    for station in stations[-21:-1]:
+        assessment = flood_risk_assessment(station)
+        if  assessment =='severe':
             Nsevere +=1
-        if flood_risk_assessment(station) =='high':
+        elif  assessment =='high':
             Nhigh +=1
-        if flood_risk_assessment(station) =='moderate':
+        elif  assessment =='moderate':
             Nmoderate += 1
-        elif flood_risk_assessment(station) =='low':
+        elif assessment =='low':
             Nlow +=1
-    print('{} stations are at severe risk of flooding, {} stations are at high risk of flooding, {} stations are at moderate risk of flooding and {} stations are at low risk of flooding'.format(Nsevere, Nhigh, Nmoderate, Nlow))
+        else:
+            Nincompatible +=1
+    print('{} stations are at severe risk of flooding, {} stations are at high risk of flooding, {} stations are at moderate risk of flooding, {} stations are at low risk of flooding and {} stations were incompatible with assessment'.format(Nsevere, Nhigh, Nmoderate, Nlow, Nincompatible))
 
 
 if __name__ == "__main__":
