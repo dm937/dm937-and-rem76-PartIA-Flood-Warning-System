@@ -1,7 +1,10 @@
 import numpy as np
 import matplotlib
-
+from floodsystem.datafetcher import fetch_measure_levels
 from floodsystem.station import MonitoringStation
+from datetime import timedelta
+from floodsystem.station import MonitoringStation
+
 
 def polyfit(dates, levels, p):
     w_dates = matplotlib.dates.date2num(dates)
@@ -10,10 +13,6 @@ def polyfit(dates, levels, p):
     coefficients = np.polyfit(w_dates,levels, p)
     return np.poly1d(coefficients), shift
 
-from floodsystem.datafetcher import fetch_measure_levels
-from floodsystem.station import MonitoringStation
-import numpy as np
-from datetime import timedelta
 
 
 def flood_risk_assessment(station):
