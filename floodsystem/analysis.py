@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import numpy as np
 import matplotlib
 
@@ -11,7 +10,6 @@ def polyfit(dates, levels, p):
     coefficients = np.polyfit(w_dates,levels, p)
     return np.poly1d(coefficients), shift
 
-=======
 from floodsystem.datafetcher import fetch_measure_levels
 from floodsystem.station import MonitoringStation
 import numpy as np
@@ -39,4 +37,3 @@ def flood_risk_assessment(station):
         return 'moderate'
     else:
         return 'low'
->>>>>>> a58242d7b2064866efcfa1a59241a1b6d31b7101
