@@ -33,7 +33,6 @@ def flood_risk_assessment(station, dates, levels):
     # finds the average water level 
     relative_level_ot = average_level/(station.typical_range[1]*len(level_array))
     # returns which threat level the station is 
-    print(relative_level_ot)
     if relative_level_ot >= 3:
         return 'severe'
     elif 3 > relative_level_ot >=1:

@@ -22,8 +22,7 @@ def test_flood_risk_assessment():
     levels, dates = [1.30, 1.35], [datetime.datetime.utcnow(), datetime.datetime.now() - datetime.timedelta(days=1)]
     # checking these levels produce a high threat response 
     assert flood_risk_assessment(Test_station, dates, levels) == 'high'
-    levels, dates = [0], [0]
-    levels, dates = [1.29, 1.0], [datetime.datetime.utcnow(), datetime.datetime.now()]
+    levels, dates = [1.29, 1.0], [datetime.datetime.utcnow(), datetime.datetime.now()- datetime.timedelta(days=1)]
     # checking these levels produce a moderate threat response 
     assert flood_risk_assessment(Test_station, dates, levels) == 'moderate'
     levels, dates = [0.30, 0.31], [datetime.datetime.utcnow(), (datetime.datetime.now() - datetime.timedelta(days=1))]
