@@ -1,7 +1,8 @@
 import datetime
 from floodsystem.analysis import flood_risk_assessment, polyfit
 from floodsystem.station import MonitoringStation
-
+import numpy as np
+import matplotlib
 
 Test_station = MonitoringStation(
     station_id=1,
@@ -34,8 +35,19 @@ def test_flood_risk_assessment():
 
     
 def test_polyfit():
-    levels, dates = [3.90], [datetime.datetime.utcnow()]
-    # testing that when an empty dates or levels list is inputted then an error is returned
-    poly, d0 = polyfit(dates, levels, 3)
-    assert len(poly)
+    """    test_dates = [datetime.datetime.utcnow() - datetime.timedelta(days=x) for x in range(10)]
+    test_poly = np.poly1d([2,3,4,5])
+    test_levels = test_poly(np.array(matplotlib.dates.date2num(test_dates)))
+    poly, d0 = polyfit(test_dates, test_levels, 4)
+    print(poly)
+    assert poly == test_poly"""
     # test: wacky dates, warning for high order, warning for empty
+
+    test_dates = [datetime.datetime.now() - datetime.timedelta(days=x) for x in range(10)]
+    test_poly = np.poly1d([2, 1, 7])
+    test_date_numbers = matplotlib.dates.date2num(test_dates)
+    test_date_numbers -= test_date_numbers[0]
+    test_levels = test_poly(np.array(test_date_numbers))
+    poly, d0 = polyfit(test_dates, test_levels, 4)
+    assert all(poly.c) == all(test_poly.c)
+    # assert d0 == test_date_numbers[0]
