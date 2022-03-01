@@ -31,13 +31,14 @@ def flood_risk_assessment(station, dates, levels):
     # uses np arrays to reduce computation time
     average_level = np.dot(level_array, np.ones(len(level_array)))
     # finds the average water level 
-    relative_level_ot = average_level/station.typical_range[1]
+    relative_level_ot = average_level/(station.typical_range[1]*len(level_array))
     # returns which threat level the station is 
+    print(relative_level_ot)
     if relative_level_ot >= 3:
         return 'severe'
     elif 3 > relative_level_ot >=1:
         return 'high'
-    elif 1> relative_level_ot >= 0.8:
+    elif 1> relative_level_ot >= 0.5:
         return 'moderate'
     else:
         return 'low'
