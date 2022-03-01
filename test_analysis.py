@@ -1,5 +1,5 @@
 import datetime
-from floodsystem.analysis import flood_risk_assessment
+from floodsystem.analysis import flood_risk_assessment, polyfit
 from floodsystem.station import MonitoringStation
 
 
@@ -30,6 +30,12 @@ def test_flood_risk_assessment():
     levels, dates = [], [datetime.datetime.utcnow()]
     # checking inconsistent results produce no response
     assert flood_risk_assessment(Test_station, dates, levels) == None
-def polyfit():
-    order, dates, levels = 4, 
+
+
+    
+def test_polyfit():
+    levels, dates = [3.90], [datetime.datetime.utcnow()]
+    # testing that when an empty dates or levels list is inputted then an error is returned
+    poly, d0 = polyfit(dates, levels, 3)
+    assert len(poly)
     # test: wacky dates, warning for high order, warning for empty
